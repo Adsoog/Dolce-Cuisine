@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,9 @@ import com.delivery.service.entidad.Delivery;
 import com.delivery.service.servicio.DeliveryService;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/delivery")
 public class DeliveryController {
 
@@ -56,5 +58,15 @@ public class DeliveryController {
 		}
 		return ResponseEntity.ok(deliverys);
 	}	
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> eliminarDelivery(@PathVariable("id") int id) {
+	    Delivery delivery = deliveryService.getDeliveryById(id);
+	    if (delivery == null) {
+	        return ResponseEntity.notFound().build();
+	    }
+	    deliveryService.delete(delivery);
+	    return ResponseEntity.noContent().build();
+	}
 
 }

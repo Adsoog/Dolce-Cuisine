@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="title">Motos</h1>
+  <form class="form" (ngSubmit)="agregarMoto()" #motoForm="ngForm">
+    <div class="form-group">
+      <label for="marca">Marca: </label>
+      <input type="text" id="marca" name="marca" [(ngModel)]="nuevaMoto.marca" required pattern="[A-Z]+"
+        title="Solo se permiten letras mayúsculas" maxlength="10">
+    </div>
+  
+    <div class="form-group">
+      <label for="modelo">Modelo: </label>
+      <input type="text" id="modelo" name="modelo" [(ngModel)]="nuevaMoto.modelo" required maxlength="10">
+    </div>
+  
+    <div class="form-group">
+      <label for="usuarioId">Usuario ID: </label>
+      <input type="number" id="usuarioId" name="usuarioId" [(ngModel)]="nuevaMoto.usuarioId" required inputmode="numeric">
+    </div>
+  
+    <button type="submit" [disabled]="!motoForm.valid" class="green-button">Agregar Moto: </button>
+  </form>
+  
+  <ul class="results">
+      <li *ngFor="let moto of data" class="moto-item">
+          <div class="moto-box">
+            <div class="moto-detail">
+              <span class="moto-label">ID:</span>
+              <span class="moto-value">{{ moto.id }}</span>
+            </div>
+            <div class="moto-detail">
+              <span class="moto-label">Marca:</span>
+              <span class="moto-value">{{ moto.marca }}</span>
+            </div>
+            <div class="moto-detail">
+              <span class="moto-label">Modelo:</span>
+              <span class="moto-value">{{ moto.modelo }}</span>
+            </div>
+            <div class="moto-detail">
+              <span class="moto-label">Usuario ID:</span>
+              <span class="moto-value">{{ moto.usuarioId }}</span>
+            </div>
+          </div>
+        </li>
+  </ul>
+</div>

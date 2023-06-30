@@ -31,5 +31,9 @@ public class DeliveryService {
 	public List<Delivery> byUsuarioId(int usuarioId){
 		return deliveryRepository.findByUsuarioId(usuarioId);
 	}
+	
+	public void delete(Delivery delivery) {
+		deliveryRepository.delete(delivery);
+	}
 
 }
