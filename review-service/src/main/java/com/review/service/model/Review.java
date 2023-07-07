@@ -16,7 +16,7 @@ public class Review {
 	@Id
 	private String reviewId;
 	private String titulo;
-	private String reseña;
+	private String resena;
 	private int puntuacion;
 	
 }

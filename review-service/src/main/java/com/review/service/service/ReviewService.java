@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.review.service.model.Review;
 import com.review.service.repository.ReviewRepository;
 
+@Service
 public class ReviewService {
 	
 	@Autowired
@@ -40,13 +42,13 @@ public class ReviewService {
     	Review existingReview = repository.findById(reviewRequest.getReviewId()).get();
         existingReview.setTitulo(reviewRequest.getTitulo());
         existingReview.setPuntuacion(reviewRequest.getPuntuacion());
-        existingReview.setReseña(reviewRequest.getReseña());
+        existingReview.setResena(reviewRequest.getResena());
         return repository.save(existingReview);
     }
 
-    public String deleteReview(String reviewId){
-        repository.deleteById(reviewId);
-        return reviewId+" Review deleted from dashboard ";
-    }
+	    public String deleteReview(String reviewId){
+	        repository.deleteById(reviewId);
+	        return reviewId+" Review deleted from dashboard ";
+	    }
 
 }

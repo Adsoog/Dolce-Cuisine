@@ -1,1 +1,32 @@
-<p>review works!</p>
+<h2>Reviews</h2>
+
+<!-- Mostrar los reviews existentes -->
+<div *ngIf="data.length > 0">
+  <ul>
+    <li *ngFor="let review of data">
+      <h3>{{ review.titulo }}</h3>
+      <p>{{ review.resena }}</p>
+      <p>Puntuación: {{ review.puntuacion }}</p>
+      <button (click)="deleteReview(review.reviewId)">Eliminar</button>
+      <hr>
+    </li>
+  </ul>
+</div>
+
+<!-- Formulario para agregar una nueva review -->
+<h2>Agregar una nueva review</h2>
+<form (submit)="agregarReview()">
+  <div>
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" [(ngModel)]="nuevoReview.titulo" required>
+  </div>
+  <div>
+    <label for="resena">Reseña:</label>
+    <textarea id="resena" name="resena" [(ngModel)]="nuevoReview.resena" required></textarea>
+  </div>
+  <div>
+    <label for="puntuacion">Puntuación:</label>
+    <input type="number" id="puntuacion" name="puntuacion" [(ngModel)]="nuevoReview.puntuacion" required>
+  </div>
+  <button type="submit">Agregar</button>
+</form>

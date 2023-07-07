@@ -1,18 +1,17 @@
 package com.delivery.service.entidad;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 
 import lombok.Data;
 
-@Entity
+@Document(collection = "deliverys")
 @Data
 public class Delivery {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String nombre;
